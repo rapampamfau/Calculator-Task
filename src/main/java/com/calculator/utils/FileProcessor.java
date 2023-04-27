@@ -34,8 +34,12 @@ public class FileProcessor {
                     if (!previousLine.equals("")) {
                         String[] content = previousLine.split(" ");
                         String operator = content[0];
-                        Long numberFromInstruction = Long.decode(content[1]);
-                        actualNumber = decodeInstructions(operator, actualNumber, numberFromInstruction);
+                        try {
+                            Long numberFromInstruction = Long.decode(content[1]);
+                            actualNumber = decodeInstructions(operator, actualNumber, numberFromInstruction);
+                        } catch (NumberFormatException e) {
+                            e.getMessage();
+                        }
                     }
                     previousLine = currentLine;
                 }
