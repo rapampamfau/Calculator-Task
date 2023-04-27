@@ -10,31 +10,7 @@ public class FileVerificationTestSuite {
     private FileVerification fv = new FileVerification();
 
     @Test
-    void testGetLastLine() {
-        //Given
-        File file = new File("C:\\Development\\Java\\Calculator-Task\\src\\test\\resources\\testFile1.txt");
-
-        //When
-        String result = fv.getLastLine(file);
-
-        //Then
-        assertEquals("test", result);
-    }
-
-    @Test
-    void testVerifyLastLine() {
-        //Given
-        File file = new File("C:\\Development\\Java\\Calculator-Task\\src\\test\\resources\\testFile2.txt");
-
-        //When
-        boolean result = fv.verifyLastLine(file);
-
-        //Then
-        assertTrue(result);
-    }
-
-    @Test
-    void testVerifyAllInstructions() {
+    void testVerifyAllInstructionsGood() {
         //Given
         File file = new File("C:\\Development\\Java\\Calculator-Task\\src\\test\\resources\\testFile3.txt");
 
@@ -43,6 +19,30 @@ public class FileVerificationTestSuite {
 
         //Then
         assertTrue(result);
+    }
+
+    @Test
+    void testVerifyAllInstructionsDoubleValues() {
+        //Given
+        File file = new File("C:\\Development\\Java\\Calculator-Task\\src\\test\\resources\\testFile5.txt");
+
+        //When
+        boolean result = fv.verifyAllInstructions(file);
+
+        //Then
+        assertTrue(result);
+    }
+
+    @Test
+    void testVerifyAllInstructionsWithDivideByZero() {
+        //Given
+        File file = new File("C:\\Development\\Java\\Calculator-Task\\src\\test\\resources\\testFile4.txt");
+
+        //When
+        boolean result = fv.verifyAllInstructions(file);
+
+        //Then
+        assertFalse(result);
     }
 
     @Test
