@@ -1,7 +1,8 @@
 package com.calculator;
 
-public class CalculatorRun {
+public class CalculatorRunner {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Calculator c = new Calculator();
+        c.run();
     }
 }
